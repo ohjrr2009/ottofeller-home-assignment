@@ -1,0 +1,38 @@
+# ############################ Types #################################
+type Customer {
+  id: ID!
+  fullName: String!
+  email: String!
+}
+
+type ProductsListItem {
+  id: ID!
+  name: String!
+  price: Float!
+  quantity: Float!
+}
+
+type Order {
+  id: ID!
+  customer: Customer!
+  date: String!
+  totalAmount: Float!
+  products: [ProductsListItem]!
+}
+
+
+# ############################# Inputs ###############################
+"""
+The Query object
+"""
+# eslint-disable-next-line @graphql-eslint/strict-id-in-types
+type Query {
+  orders(orderId: String): [Order]
+}
+
+"""
+The Schema object
+"""
+schema {
+  query: Query
+}
